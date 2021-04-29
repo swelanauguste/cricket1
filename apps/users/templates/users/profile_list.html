@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+Players List
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container">
+    <p>Players</p>
+
+    {% for object in object_list %}
+    <p>
+        <a class="text-decoration-none text-dark"
+            href="{% url 'users:profile-detail' object.pk %}">
+            {{object.get_full_name }}</a>
+    </p>
+    {% endfor %}
+</div>
+
+{% endblock content %}
