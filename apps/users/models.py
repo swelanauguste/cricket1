@@ -9,22 +9,26 @@ Users = settings.AUTH_USER_MODEL
 class Role(models.Model):
     name = models.CharField(max_length=200)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
 
 class Profile(models.Model):
     user = models.OneToOneField(Users, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
+    nickname = models.CharField(max_length=200, blank=True)
     role = models.ManyToManyField(Role)
-
     matches = models.PositiveIntegerField(default=0)
     batting_innings = models.PositiveIntegerField(default=0)
     fours = models.PositiveIntegerField('4s', default=0)
     sixes = models.PositiveIntegerField('6s', default=0)
     no = models.PositiveIntegerField('not out', default=0)
-    batting_runs = models.PositiveBigIntegerField(default=0)
+    batting_runs = models.PositiveIntegerField(default=0)
     hs = models.PositiveIntegerField('highest score', default=0)
     hundreds = models.PositiveIntegerField('100s', default=0)
     fifties = models.PositiveIntegerField('50s', default=0)
@@ -32,7 +36,7 @@ class Profile(models.Model):
     catches = models.PositiveIntegerField('Ct', default=0)
     stumped = models.PositiveIntegerField('St', default=0)
     balls = models.PositiveIntegerField(default=0)
-    bowling_runs = models.PositiveBigIntegerField(default=0)
+    bowling_runs = models.PositiveIntegerField(default=0)
     wkts = models.PositiveIntegerField('wickets', default=0)
 
     def get_absolute_url(self):

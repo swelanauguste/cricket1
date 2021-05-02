@@ -11,13 +11,51 @@ Players List
 <div class="container">
     <p>Players</p>
 
-    {% for object in object_list %}
-    <p>
-        <a class="text-decoration-none text-dark"
-            href="{% url 'users:profile-detail' object.pk %}">
-            {{object.get_full_name }}</a>
-    </p>
-    {% endfor %}
+    <div class="container mb-5">
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for object in object_list %}
+
+            <a class="text-decoration-none text-dark"
+                href="{% url 'users:profile-detail' object.pk %}">
+                <div class="col">
+                    <div class="card text-white bg-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">{{object.get_full_name }}
+                            </h5>
+                            <p class="card-text">
+
+                                <hr>
+                            <div class="text-muted">ROLES |
+
+                                {% for role in object.role.all %}
+                                <li>
+                                    {{role.name }}
+                                </li>
+                                {% endfor %}
+
+                            </div>
+                            <div class="text-muted">MATCHES |
+                                {{object.matches}}</div>
+                            <div class="text-muted">100s/50s |
+                                {{object.hundreds}}/{{object.fifties}}</div>
+                            <div class="text-muted">HS | {{object.hs}}</div>
+                            <div class="text-muted">RUNS |
+                                {{object.batting_runs}}</div>
+                            <div class="text-muted">AVE |
+                                {{object.get_batting_average }}</div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
 </div>
 
 {% endblock content %}

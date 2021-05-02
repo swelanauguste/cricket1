@@ -1,0 +1,14 @@
+right hand bat
+left hand bat
+right hand offbreak
+leg break
+middle order batter
+wicketkeeper
+slow left arm orthodox
+allrounder
+right arm medium
+left arm medium fast
+right arm fast medium
+left arm fast medium
+right arm fast
+legbreak googly

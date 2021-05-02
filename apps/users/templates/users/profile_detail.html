@@ -6,19 +6,24 @@
 
 {% block content %}
 <div class="container bg-dark p-5">
-    <div style="width: 10rem; height:10rem" class="btn btn-light rounded-circle">
-        
+    <div style="width: 10rem; height:10rem"
+        class="btn btn-light rounded-circle">
+
     </div>
 </div>
 <div class="container my-5 small">
     <div class="row">
         <div class="col">
             <div class="row">
-                <div class="col-2">
+                <div class="col-lg-2 my-2">
+
+                    {% if request.user == object.user %}
                     <a class="fs-4 btn btn-outline-dark rounded-circle"
                         href="{% url 'users:profile-update' object.pk %}">
                         <i class="bi bi-pencil"></i>
                     </a>
+                    {% endif %}
+
                 </div>
                 <div class="col">
                     {{object.get_full_name }}
@@ -30,7 +35,7 @@
                         </li>
                         {% endfor %}
                     </ul>
-                    <p class="text-muted">ROLE</p>
+                    <p class="text-muted">ROLES</p>
                 </div>
             </div>
         </div>
@@ -38,74 +43,74 @@
         </div>
     </div>
 
-<hr>
+    <hr>
 
-<h4 class="mt-5">CAREER AVAERAGES</h4>
-<hr>
-<div class="container small">
-    <h5 class="mt-5">Batting and Fielding</h5>
-    <div class="col-lg-6">
-        <table class="table bg-light small">
-            <thead>
-                <tr>
-                    <th scope="col">Mat</th>
-                    <th scope="col">Inns</th>
-                    <th scope="col">NO</th>
-                    <th scope="col">Runs</th>
-                    <th scope="col">HS</th>
-                    <th scope="col">Ave</th>
-                    <th scope="col">100s</th>
-                    <th scope="col">50s</th>
-                    <th scope="col">4s</th>
-                    <th scope="col">6s</th>
-                    <th scope="col">Ct</th>
-                    <th scope="col">St</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{object.matches}}</td>
-                    <td>{{object.batting_innings}}</td>
-                    <td>{{object.no}}</td>
-                    <td>{{object.batting_runs}}</td>
-                    <td>{{object.hs}}</td>
-                    <td>{{object.get_batting_average}}</td>
-                    <td>{{object.hundreds}}</td>
-                    <td>{{object.fifties}}</td>
-                    <td>{{object.fours}}</td>
-                    <td>{{object.sixes}}</td>
-                    <td>{{object.catches}}</td>
-                    <td>{{object.stumped}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <h4 class="mt-5">CAREER AVAERAGES</h4>
+    <hr>
+    <div class="container small">
+        <h5 class="mt-5">Batting and Fielding</h5>
+        <div class="col-lg-6">
+            <table class="table bg-light small">
+                <thead>
+                    <tr>
+                        <th scope="col">Mat</th>
+                        <th scope="col">Inns</th>
+                        <th scope="col">NO</th>
+                        <th scope="col">Runs</th>
+                        <th scope="col">HS</th>
+                        <th scope="col">Ave</th>
+                        <th scope="col">100s</th>
+                        <th scope="col">50s</th>
+                        <th scope="col">4s</th>
+                        <th scope="col">6s</th>
+                        <th scope="col">Ct</th>
+                        <th scope="col">St</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{object.matches}}</td>
+                        <td>{{object.batting_innings}}</td>
+                        <td>{{object.no}}</td>
+                        <td>{{object.batting_runs}}</td>
+                        <td>{{object.hs}}</td>
+                        <td>{{object.get_batting_average}}</td>
+                        <td>{{object.hundreds}}</td>
+                        <td>{{object.fifties}}</td>
+                        <td>{{object.fours}}</td>
+                        <td>{{object.sixes}}</td>
+                        <td>{{object.catches}}</td>
+                        <td>{{object.stumped}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <h5 class="mt-5">Bowling</h5>
+        <div class="col-lg-6">
+            <table class="table bg-light small">
+                <thead>
+                    <tr>
+                        <th scope="col">Mat</th>
+                        <th scope="col">Inns</th>
+                        <th scope="col">Overs</th>
+                        <th scope="col">Runs</th>
+                        <th scope="col">wkts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{object.matches}}</td>
+                        <td>{{object.bowling_innings}}</td>
+                        <td>{{object.get_overs}}</td>
+                        <td>{{object.bowling_runs}}</td>
+                        <td>{{object.wkts}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-
-    <h5 class="mt-5">Bowling</h5>
-    <div class="col-lg-6">
-        <table class="table bg-light small">
-            <thead>
-                <tr>
-                    <th scope="col">Mat</th>
-                    <th scope="col">Inns</th>
-                    <th scope="col">Overs</th>
-                    <th scope="col">Runs</th>
-                    <th scope="col">wkts</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{object.matches}}</td>
-                    <td>{{object.bowling_innings}}</td>
-                    <td>{{object.get_overs}}</td>
-                    <td>{{object.bowling_runs}}</td>
-                    <td>{{object.wkts}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 
 </div>
 

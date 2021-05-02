@@ -12,5 +12,5 @@ class ProfileUpdateForm(forms.ModelForm):
                )
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'role']
+        fields = ['first_name', 'last_name', 'nickname', 'role']
        
