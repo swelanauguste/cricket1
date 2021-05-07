@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load inventory_tags %}
+
+{% block head_title %}
+{{object.name}}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container text-muted p-0">
+    <a class="p-0" href="{% url 'inventory:list' %}">
+        <i class="bi bi-skip-backward fs-1"></i>
+    </a>
+</div>
+<hr>
+<div class="container">
+   
+    <div class="container">
+        <h1>{{object.name}}</h1>
+        <hr>
+    </div>
+
+    <p><span class="text-muted">CATEGORY | </span><a
+            href="">{{object.category}}</a></p>
+    <p><span class="text-muted">PRICE | </span>XCD${{object.price}}</p>
+    <p><span class="text-muted">COUNT | </span>{{object.count}}</p>
+    <p><span class="text-muted small">VALUE |
+        </span>XCD${{object.get_asset_value}}</p>
+    <p><span class="text-muted small">UPDATED | {{object.updated}}</span></p>
+    <hr>
+    
+    {% if object.desc %}
+    <p>
+        {{object.desc|markdown}}
+    </p>
+    <hr>
+    {% endif %}
+   
+    <p class="text-end">
+        <a class="text-decoration-none text-warning"
+            href="{% url 'inventory:update' object.pk %}">UPDATE</a>
+    </p>
+    <hr>
+</div>
+{% endblock content %}

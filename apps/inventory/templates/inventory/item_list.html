@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head_title %}
+Items
+{% endblock head_title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="container">
+        <h1>Items</h1>
+    </div>
+
+    <ol class="list-group">
+        
+        {% for object in object_list %}
+        <li class="list-group-item">
+            <a class="text-dark text-decoration-none" href="{{object.get_absolute_url}}">{{ object.name }}</a>
+        </li>
+        {% endfor %}
+      
+    </ol>
+</div>
+
+
+{% endblock content %}

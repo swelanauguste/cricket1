@@ -12,3 +12,4 @@ right arm fast medium
 left arm fast medium
 right arm fast
 legbreak googly
+captain

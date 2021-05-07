@@ -10,5 +10,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['name', 'quantity', 'category']
-    list_editable = ['quantity']
+    list_display = ['name', 'count', 'category']
+    list_editable = ['count']
