@@ -1,4 +1,4 @@
-# import django_heroku
+import django_heroku
 import os
 from pathlib import Path
 
@@ -179,4 +179,4 @@ LOGGING = {
 }
 
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
