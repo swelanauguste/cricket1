@@ -21,11 +21,7 @@ class Profile(models.Model):
     is_active = models.BooleanField(default=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    pic = models.URLField(blank=True)
-    default_pic = models.URLField(
-        editable=False,
-        default="https://drive.google.com/file/d/1W50JnkJ0V1U0grarMPozNhj-VTxMexTA/preview",
-    )
+    pic = models.CharField("URL link to your Photo", max_length=256, blank=True)
     nickname = models.CharField(max_length=200, blank=True)
     role = models.ManyToManyField(Role)
     matches = models.PositiveIntegerField(default=0)
@@ -47,10 +43,13 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse("users:profile-detail", args=[str(self.id)])
 
+    @property
     def get_profile_image(self):
         if self.pic:
             return self.pic
-        return self.default_pic
+        return str(
+            "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+        )
 
     @property
     def get_overs(self):
@@ -70,4 +69,4 @@ class Profile(models.Model):
     def __str__(self):
         if self.first_name and self.last_name:
             return f"{self.first_name} {self.last_name}"
-        return self.user.username
+        return str(self.user.username)

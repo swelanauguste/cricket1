@@ -6,24 +6,23 @@
 
 {% block content %}
 
+
 <div class="container">
     <div class="bg-dark d-flex justify-content-center p-5">
         {% if request.user == object.user %}
 
         <a href="{% url 'users:profile-update' object.pk %}">
 
-            <iframe class="rounded-circle"
+            <img class="rounded-circle"
                 style="width: 10rem; height:10rem"
                 src="{{object.get_profile_image}}"
-                ></iframe>
-
+                alt="...">
         </a>
-
         {% else %}
-        <iframe class="rounded-circle"
-        style="width: 10rem; height:10rem"
-        src="{{object.get_profile_image}}"
-        ></iframe>
+        <img class="rounded-circle"
+            style="width: 10rem; height:10rem"
+            src="{{object.get_profile_image}}"
+            alt="...">
 
         {% endif %}
 
